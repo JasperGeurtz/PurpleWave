@@ -18,5 +18,5 @@ case class Upgrade(val baseType: UpgradeType) {
   lazy val upgradeFrames        = levels.map(i => (i, baseType.upgradeTime(i))).toMap
   lazy val whatsRequired        = levels.map(i => (i, UnitClasses.get(baseType.whatsRequired(i)))).toMap
   
-  override def toString:String = asString
+  override def toString: String = asString
 }

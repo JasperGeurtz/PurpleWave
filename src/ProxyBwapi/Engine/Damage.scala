@@ -1,5 +1,7 @@
 package ProxyBwapi.Engine
 
+import bwapi.DamageType
+
 object Damage {
   
   trait Type {
@@ -26,4 +28,10 @@ object Damage {
         }
       case _ => 1.0
     }
+
+  def get(t: DamageType): Type = {
+    if (t == DamageType.Concussive) Concussive
+    else if (t == DamageType.Explosive) Explosive
+    else Normal
+  }
 }
