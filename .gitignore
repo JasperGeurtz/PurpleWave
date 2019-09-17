@@ -3,11 +3,8 @@
 *.log
 *.class
 *.zip
-.idea/workspace.xml
-.idea/codeStyles
-.idea/hydra.xml
-.idea/libraries/scala_sdk_2_12_6.xml
-.idea/scala_settings.xml
+*.iml
+.idea/
 /out/
 /src/META-INF
 /bwapi-data/
