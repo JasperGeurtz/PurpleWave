@@ -11,13 +11,12 @@ import Utilities.ByOption
 object Gravitate extends Action {
   
   override def allowed(unit: FriendlyUnitInfo): Boolean = (
-    unit.canMove
-    && unit.agent.forces.nonEmpty
+    unit.canMove && unit.agent.forces.nonEmpty
   )
   
   private val rayDistance = 32.0 * 3.0
-  private val cardinal8directions = (0.0 until 2.0 by 0.25).map(_ * Math.PI).toVector
-  
+  private val cardinal8directions = (BigDecimal(0.0) until 2.0 by 0.25).map(_ * Math.PI).map(_.toDouble).toVector
+
   def useShortAreaPathfinding(unit: FriendlyUnitInfo): Boolean = {
     ! unit.flying && ! unit.transport.exists(_.flying) && unit.agent.destination.zone == unit.zone
   }

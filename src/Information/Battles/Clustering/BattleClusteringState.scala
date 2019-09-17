@@ -13,8 +13,8 @@ import scala.collection.mutable.ArrayBuffer
 class BattleClusteringState(seedUnits: Vector[UnitInfo]) {
 
   val unitLinks = new mutable.HashMap[UnitInfo, UnitInfo]
-  val horizon: mutable.Stack[UnitInfo] = mutable.Stack[UnitInfo]()
-  horizon.pushAll(seedUnits.filter(_.isEnemy))
+  val horizon = new mutable.ArrayStack [UnitInfo]
+  horizon ++= seedUnits.filter(_.isEnemy)
   
   def isComplete: Boolean = horizon.isEmpty
   
@@ -66,7 +66,7 @@ class BattleClusteringState(seedUnits: Vector[UnitInfo]) {
     if ( ! unitLinks.contains(nextUnit)) {
       unitLinks.put(nextUnit, linkedFoe.getOrElse(nextUnit))
     }
-    horizon.pushAll(newFoes.filter(seedUnits.contains))
+    horizon ++= newFoes.filter(seedUnits.contains)
   }
 
   private lazy val finalClusters: Vector[Vector[UnitInfo]] = {

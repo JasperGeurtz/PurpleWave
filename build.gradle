@@ -5,8 +5,8 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 dependencies {
-    compile 'org.scala-lang:scala-library:2.12.6'
-    compile 'com.github.JavaBWAPI:JBWAPI:0.8.1'
+    compile 'org.scala-lang:scala-library:2.12.10'
+    compile 'com.github.JavaBWAPI:JBWAPI:0.8'
 }
 sourceSets {
     main {
