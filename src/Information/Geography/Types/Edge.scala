@@ -17,7 +17,7 @@ class Edge(choke: Chokepoint) {
   lazy val pixelCenter  : Pixel = new Pixel(choke.getCenter)
   lazy val radiusPixels : Double = choke.getWidth / 2
   lazy val tiles        : Vector[Tile] = PixelRay(sidePixels.head, sidePixels.last).tilesIntersected.toVector
-  lazy val sidePixels   : Vector[Pixel] = Vector(new Pixel(choke.getSides.first), new Pixel(choke.getSides.second))
+  lazy val sidePixels   : Vector[Pixel] = Vector(new Pixel(choke.getSides.getFirst), new Pixel(choke.getSides.getSecond))
   lazy val endPixels: Vector[Pixel] = Vector(-1, 1)
     .map(m => pixelCenter
       .radiateRadians(
@@ -28,8 +28,8 @@ class Edge(choke: Chokepoint) {
         32))
   lazy val zones: Vector[Zone] =
     Vector(
-      choke.getRegions.first,
-      choke.getRegions.second)
+      choke.getRegions.getFirst,
+      choke.getRegions.getSecond)
     .map(region => With.geography.zones.minBy(
       _.centroid.pixelCenter.pixelDistanceSquared(
         new Pixel(region.getCenter))))

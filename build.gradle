@@ -2,24 +2,18 @@ apply plugin: 'scala'
 sourceCompatibility = 1.8
 repositories {
     mavenCentral()
+    maven { url 'https://jitpack.io' }
 }
 dependencies {
     compile 'org.scala-lang:scala-library:2.12.6'
+    compile 'com.github.JavaBWAPI:JBWAPI:0.7.2'
 }
 sourceSets {
     main {
-         scala {
-              srcDirs = ['src/']
-              }
-         }
-}
-repositories {
-    flatDir {
-        dirs 'lib'
+        scala {
+            srcDirs = ['src/']
+        }
     }
-}
-dependencies {
-    compile fileTree(dir: 'lib', include: ['*.jar'], exclude: ['*-javadoc.jar'])
 }
 
 task fatJar(type: Jar) {

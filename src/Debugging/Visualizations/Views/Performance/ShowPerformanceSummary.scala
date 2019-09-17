@@ -15,9 +15,9 @@ object ShowPerformanceSummary extends View {
     With.game.drawTextScreen(80,  2 * With.visualization.lineHeightSmall, "+1000ms: "   + With.performance.framesOver1000   + "/10")
     With.game.drawTextScreen(155, 2 * With.visualization.lineHeightSmall, "+10000ms: "  + With.performance.framesOver10000  + "/1")
     if (With.performance.disqualified) {
-      With.game.setTextSize(bwapi.Text.Size.Enum.Large)
+      With.game.setTextSize(bwapi.TextSize.Large)
       DrawScreen.header(295, ":/")
-      With.game.setTextSize(bwapi.Text.Size.Enum.Small)
+      With.game.setTextSize(bwapi.TextSize.Small)
     }
   }
 }

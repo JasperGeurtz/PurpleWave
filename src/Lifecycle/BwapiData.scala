@@ -1,8 +1,7 @@
 package Lifecycle
 
 import java.io.File
-
-import scala.reflect.io.Path
+import java.nio.file.Paths
 
 class BwapiData {
   lazy val originalWorkingDirectory = System.getProperty("user.dir")
@@ -18,14 +17,14 @@ class BwapiData {
   private def getIntendedWorkingDirectory: String = {
     try {
       // Try backing up until we find it
-      var path = Path(originalWorkingDirectory)
+      var path = Paths.get(originalWorkingDirectory)
       do {
-        if (isCorrect(path.toString())) {
-          return path.toString()
+        if (isCorrect(path.toString)) {
+          return path.toString
         }
-        path = path.parent
+        path = path.getParent
       }
-      while (path != path.parent)
+      while (path != path.getParent)
       originalWorkingDirectory
     }
     catch {

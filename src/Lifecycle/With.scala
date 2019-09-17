@@ -93,7 +93,7 @@ object With {
   
   def onStart() {
     game.setLatCom(false)
-    game.enableFlag(1) //Enable unit control
+    game.enableFlag(bwapi.Flag.UserInput) //Enable unit control
     game.setLocalSpeed(0)
     
     proxy             = new ProxyBWMirror
@@ -149,15 +149,11 @@ object With {
   
   def onEnd() {
     With.logger.flush()
-    BWTA.cleanMemory()
   }
   
   private def initializeBWTA() {
     With.logger.debug("Loading BWTA for " + With.game.mapName + " at " + With.game.mapFileName())
-    BWTA.readMap()
+    BWTA.readMap(game)
     BWTA.analyze()
-    //These may not be necessary or helpful since BWTA2 doesn't seem to work in BWMirror
-    BWTA.computeDistanceTransform()
-    BWTA.buildChokeNodes()
   }
 }
