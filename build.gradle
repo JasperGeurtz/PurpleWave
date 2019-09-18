@@ -6,7 +6,7 @@ repositories {
 }
 dependencies {
     compile 'org.scala-lang:scala-library:2.12.6'
-    compile 'com.github.JavaBWAPI:JBWAPI:0.8.1'
+    compile 'com.github.JavaBWAPI:JBWAPI:0.8.2'
 }
 sourceSets {
     main {
